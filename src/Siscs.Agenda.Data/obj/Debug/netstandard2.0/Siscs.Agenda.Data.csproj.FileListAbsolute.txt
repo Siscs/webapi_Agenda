@@ -1,0 +1,12 @@
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/bin/Debug/netstandard2.0/Siscs.Agenda.Data.deps.json
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/bin/Debug/netstandard2.0/Siscs.Agenda.Data.dll
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/bin/Debug/netstandard2.0/Siscs.Agenda.Data.pdb
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/obj/Debug/netstandard2.0/Siscs.Agenda.Data.AssemblyInfoInputs.cache
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/obj/Debug/netstandard2.0/Siscs.Agenda.Data.AssemblyInfo.cs
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/obj/Debug/netstandard2.0/Siscs.Agenda.Data.csproj.CoreCompileInputs.cache
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/obj/Debug/netstandard2.0/Siscs.Agenda.Data.dll
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/obj/Debug/netstandard2.0/Siscs.Agenda.Data.pdb
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/bin/Debug/netstandard2.0/Siscs.Agenda.Business.dll
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/bin/Debug/netstandard2.0/Siscs.Agenda.Business.pdb
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/obj/Debug/netstandard2.0/Siscs.Agenda.Data.csprojAssemblyReference.cache
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/obj/Debug/netstandard2.0/Siscs.Agenda.Data.csproj.CopyComplete
