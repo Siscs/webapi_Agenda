@@ -15,11 +15,17 @@ namespace Siscs.Agenda.Api.Controllers
     public class CategoriaController : MainController
     {
         private readonly ICategoriaRepository _repository;
+        private readonly ICategoriaService _categoriaService;
         private readonly IMapper _mapper;
 
-        public CategoriaController(ICategoriaRepository CategoriaRepository, IMapper mapper)
+        public CategoriaController(ICategoriaRepository CategoriaRepository,
+                                   INotificador notificador,
+                                   ICategoriaService categoriaService,
+                                   IMapper mapper) : base(notificador)
+                                   
         {
             _repository = CategoriaRepository;
+            _categoriaService = categoriaService;
             _mapper = mapper;
         }
 
@@ -33,27 +39,28 @@ namespace Siscs.Agenda.Api.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<CategoriaVM>> GetById(long id)
         {
-            if(id > 0)
+            
+            if(id <= 0)
             {
-                var res = await _repository.ObterPorId(id);
-                if(res == null) return NotFound();
-                return _mapper.Map<CategoriaVM>(res);
-            } 
-            else
-            {
-                return BadRequest(new { message = "Id Inválido"});
+                NotificarErro("Id inválido");
+                return CustomResponse();
             }
+
+            var res = await _repository.ObterPorId(id);
+            if(res == null) return NotFound();
+            return _mapper.Map<CategoriaVM>(res);
+
         }
 
         [HttpPost]
         //[ClaimsAuthorize("Categoria", "Incluir")]
         public async Task<ActionResult<CategoriaVM>> Post(CategoriaVM categoriaVM)
         {
-            if(!ModelState.IsValid) return BadRequest(ModelState);
+            if(!ModelState.IsValid) return CustomResponse(ModelState);
 
-            await _repository.Adicionar(_mapper.Map<Categoria>(categoriaVM));
+            await _categoriaService.Adicionar(_mapper.Map<Categoria>(categoriaVM));
 
-            return Ok(categoriaVM);
+            return CustomResponse(categoriaVM);
             
         }
 
@@ -61,28 +68,27 @@ namespace Siscs.Agenda.Api.Controllers
         // [ClaimsAuthorize("Categoria", "Alterar")]
         public async Task<ActionResult<CategoriaVM>> Put(CategoriaVM categoriaVM)
         {
-            if(ModelState.IsValid)
-            {
-                await _repository.Alterar(_mapper.Map<Categoria>(categoriaVM));
-                return Ok(categoriaVM);
-            } else {
-                return BadRequest(ModelState);
-            }
+            if(!ModelState.IsValid) return CustomResponse(ModelState);
+
+            await _categoriaService.Alterar(_mapper.Map<Categoria>(categoriaVM));
+
+            return CustomResponse(categoriaVM);
+            
         }
 
         [HttpDelete]
         // [ClaimsAuthorize("Categoria", "Excluir")]
         public async Task<ActionResult> Delete(CategoriaVM categoria)
         {
-            if(categoria.Id > 0)
+            if(categoria.Id <= 0)
             {
-                await _repository.Excluir(categoria.Id);
-                return Ok();
-            } 
-            else
-            {
-                return BadRequest(new { message = "Categoria Inválida"});
+                NotificarErro("Id da categoria inválida.");
+                return CustomResponse();
             }
+
+            await _categoriaService.Excluir(categoria.Id);
+            return CustomResponse();
+
         }
     }
 }

@@ -16,7 +16,9 @@ namespace Siscs.Agenda.Api.Controllers
     {
         private readonly IInstituicaoRepository _repository;
         private readonly IMapper _mapper;
-        public InstituicaoController(IInstituicaoRepository instituicaoRepository, IMapper mapper)
+        public InstituicaoController(IInstituicaoRepository instituicaoRepository, 
+                                     INotificador notificador,
+                                     IMapper mapper) : base(notificador)
         {
             _repository = instituicaoRepository;
             _mapper = mapper;

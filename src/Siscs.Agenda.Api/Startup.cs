@@ -40,6 +40,12 @@ namespace Siscs.Agenda.Api
         
             services.AddAutoMapper(typeof(Startup));
 
+            // desativar modelstate validators
+            services.Configure<ApiBehaviorOptions>(options => 
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
             services.AddControllers();
         }
 

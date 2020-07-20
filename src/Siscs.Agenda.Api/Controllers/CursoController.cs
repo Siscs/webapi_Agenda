@@ -16,7 +16,9 @@ namespace Siscs.Agenda.Api.Controllers
     {
         private readonly ICursoRepository _repository;
         private readonly IMapper _mapper;
-        public CursoController(ICursoRepository CursoRepository, IMapper mapper)
+        public CursoController(ICursoRepository CursoRepository, 
+                               INotificador notificador,
+                               IMapper mapper) : base(notificador)
         {
             _repository = CursoRepository;
             _mapper = mapper;

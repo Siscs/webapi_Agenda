@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ogi4NiGytWT7gj/paUksF2caMlFd0nyhSmK1up3hK3oz3XhOfPPRWCmJFvioj7wmvwEQDzb87JtsrB8vmrIQ7Q==",
+  "dgSpecHash": "TQXiNzf9rDonCrAXvHezELPMdy2zopVafntATWmw1QRr/cPFzdPZhQyFer4+cgsVFEDEoGigJTjvmAXkXwSvig==",
   "success": true,
   "projectFilePath": "/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/Siscs.Agenda.Api.csproj",
   "expectedPackageFiles": [
     "/home/cesar/.nuget/packages/automapper/10.0.0/automapper.10.0.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.0.1/automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+    "/home/cesar/.nuget/packages/fluentvalidation/9.0.1/fluentvalidation.9.0.1.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.authentication/2.2.0/microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.authentication.cookies/2.2.0/microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

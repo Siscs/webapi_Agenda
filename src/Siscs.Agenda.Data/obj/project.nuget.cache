@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "r61xGPT585WFxC59uC0owQXYyGGwHb4JqJtuDSaxslBFOo0xV15QEVpA6kwRbxhsorpeaAc0rUA74B+/P1LKvw==",
+  "dgSpecHash": "LTydPWxXnOoHCc3eRRGQ44yI+DUln5S/+gXJR9eoNrKy9Dx56GC2a+fym4nTmgajYt1yoxABmC7ikV76U4JESA==",
   "success": true,
   "projectFilePath": "/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Data/Siscs.Agenda.Data.csproj",
   "expectedPackageFiles": [
+    "/home/cesar/.nuget/packages/fluentvalidation/9.0.1/fluentvalidation.9.0.1.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",

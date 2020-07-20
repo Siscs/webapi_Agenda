@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wuQOYBQ1rXOUm1uUjFMJGGc8TDnRtRa+/hqewqwsBbN9CGqHZR0Ej2BZibwNR5LjZzrmR0Qy2k5k3pZC5D6Wnw==",
+  "dgSpecHash": "8tNbwgBpyvv3n+C+zU0E2oeb9u6cMidJROG+7o1zymWEwxCzciyyV/f5kg7J8y0jVvB3mjC/O1vleCl1ZMgPuQ==",
   "success": true,
   "projectFilePath": "/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Business/Siscs.Agenda.Business.csproj",
   "expectedPackageFiles": [
+    "/home/cesar/.nuget/packages/fluentvalidation/9.0.1/fluentvalidation.9.0.1.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
   ],
