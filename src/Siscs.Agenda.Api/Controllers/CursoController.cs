@@ -11,7 +11,7 @@ using Siscs.Agenda.Business.Interfaces;
 namespace Siscs.Agenda.Api.Controllers
 {
     // [Authorize]
-    [Route("v1/curso")]
+    [Route("api/v1/curso")]
     public class CursoController : MainController
     {
         private readonly ICursoRepository _repository;

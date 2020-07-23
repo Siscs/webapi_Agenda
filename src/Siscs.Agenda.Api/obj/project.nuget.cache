@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TQXiNzf9rDonCrAXvHezELPMdy2zopVafntATWmw1QRr/cPFzdPZhQyFer4+cgsVFEDEoGigJTjvmAXkXwSvig==",
+  "dgSpecHash": "EA/j6wi7xY6VEwV7EuyuD8yuKrXjqDtgLcpnvGGpbNFDWDR/f8+QXvqDIHkj4i7lZeLehokJtt/gJHFfhiWxPg==",
   "success": true,
   "projectFilePath": "/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/Siscs.Agenda.Api.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.http.extensions/2.2.0/microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.identity/2.2.0/microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
+    "/home/cesar/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/3.1.6/microsoft.aspnetcore.identity.entityframeworkcore.3.1.6.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.identity.ui/3.1.6/microsoft.aspnetcore.identity.ui.3.1.6.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.webutilities/2.2.0/microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

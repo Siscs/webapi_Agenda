@@ -11,7 +11,7 @@ using Siscs.Agenda.Business.Interfaces;
 namespace Siscs.Agenda.Api.Controllers
 {
     // [Authorize]
-    [Route("v1/instituicao")]
+    [Route("api/v1/instituicao")]
     public class InstituicaoController : MainController
     {
         private readonly IInstituicaoRepository _repository;

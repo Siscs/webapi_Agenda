@@ -17,6 +17,13 @@ namespace Siscs.Agenda.Api.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(tokenConfig.Secret);
 
+            // add claims customizadas
+            identityClaims.AddClaim(new Claim(JwtRegisteredClaimNames.Sub, usuarioAuh.Id));
+            identityClaims.AddClaim(new Claim(JwtRegisteredClaimNames.Email, usuarioAuh.Email));
+            identityClaims.AddClaim(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+            identityClaims.AddClaim(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
+            identityClaims.AddClaim(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
+
             if(roles.Any())
             {
                 foreach(string item in roles)
@@ -40,6 +47,9 @@ namespace Siscs.Agenda.Api.Services
 
             return tokenHandler.WriteToken(token);
 
+
         }
+        private static long ToUnixEpochDate(DateTime date)
+            => (long)Math.Round((date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
     }
 }

@@ -7,33 +7,34 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Siscs.Agenda.Api.Services;
 using Siscs.Agenda.Api.ViewModels;
+using Siscs.Agenda.Business.Interfaces;
 
 namespace Siscs.Agenda.Api.Controllers
 {
-    [ApiController]
-    [Route("v1/auth")]
-    public class AuthController : ControllerBase
+    [Authorize]
+    [Route("api/v1/auth")]
+    public class AuthController : MainController
     {
 
         private readonly SignInManager<IdentityUser> _signInmanager;
         private readonly UserManager<IdentityUser> _usermanager;
         private readonly TokenConfig _tokenConfig;
 
-        public AuthController(SignInManager<IdentityUser> signInmanager, 
+        public AuthController(INotificador notificador,
+                              SignInManager<IdentityUser> signInmanager, 
                               UserManager<IdentityUser> usermanager,
-                              IOptions<TokenConfig> tokenConfig)
+                              IOptions<TokenConfig> tokenConfig) : base(notificador)
         {
             _signInmanager = signInmanager;
             _usermanager = usermanager;
             _tokenConfig = tokenConfig.Value;
         }
 
-
-        [HttpPost("novousuario")]
+        [HttpPost("usuario/novo")]
         [AllowAnonymous]
         public async Task<ActionResult> NovoUsuario(UsuarioRegistrarVM usuarioRegistrarVM)
         {
-            if(!ModelState.IsValid) return BadRequest(ModelState.Values.SelectMany(p => p.Errors));
+            if(!ModelState.IsValid) return CustomResponse(ModelState);
 
             var newUser = new IdentityUser
             {
@@ -44,11 +45,18 @@ namespace Siscs.Agenda.Api.Controllers
 
             var result = await _usermanager.CreateAsync(newUser, usuarioRegistrarVM.Senha);
 
-            if(!result.Succeeded) return BadRequest(result.Errors);
+            if(!result.Succeeded) 
+            {
+                foreach (var error in result.Errors)
+                {
+                    NotificarErro(error.Description);
+                }
+                return CustomResponse();
+            }
 
             await _signInmanager.SignInAsync(newUser, false);
 
-            return Ok();
+            return CustomResponse(usuarioRegistrarVM);
 
         }
 
@@ -56,7 +64,7 @@ namespace Siscs.Agenda.Api.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(UsuarioLoginVM usuarioLoginVM)
         {
-            if(!ModelState.IsValid) return BadRequest(ModelState.Values.SelectMany(p => p.Errors));
+            if(!ModelState.IsValid) return CustomResponse(ModelState);
 
             var result = await _signInmanager.PasswordSignInAsync(usuarioLoginVM.Email, usuarioLoginVM.Senha, false , true);
 
@@ -67,11 +75,18 @@ namespace Siscs.Agenda.Api.Controllers
                 var identityClaims = new ClaimsIdentity();
                 identityClaims.AddClaims(await _usermanager.GetClaimsAsync(usuario));
 
-                return Ok(TokenService.GerarToken(usuario, identityClaims, roles, _tokenConfig));
+                return CustomResponse(TokenService.GerarToken(usuario, identityClaims, roles, _tokenConfig));
             }
 
+            if(result.IsLockedOut)
+            {
+                NotificarErro("Usuário temporariamente bloqueado.");
+                return CustomResponse();    
+            }
 
-            return BadRequest(new { Message = "usuario inválido"} );
+            NotificarErro("Usuário inválido");
+            return CustomResponse();
+            
         }
         
     }

@@ -12,15 +12,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "/v1/categoria",
+      "launchUrl": "api/v1/categoria",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Siscs.Agenda.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "/v1/categoria",
+      "launchBrowser": false,
+      "launchUrl": "api/v1/categoria",
       "applicationUrl": "https://localhost:5001;https://192.168.1.150:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

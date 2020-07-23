@@ -10,8 +10,8 @@ using Siscs.Agenda.Business.Interfaces;
 
 namespace Siscs.Agenda.Api.Controllers
 {
-    // [Authorize]
-    [Route("v1/categoria")]
+    [Authorize]
+    [Route("api/v1/categoria")]
     public class CategoriaController : MainController
     {
         private readonly ICategoriaRepository _repository;
@@ -30,6 +30,7 @@ namespace Siscs.Agenda.Api.Controllers
         }
 
         [HttpGet]
+        [ClaimsAuthorize("Categoria", "Consultar")]
         public async Task<ActionResult<List<CategoriaVM>>> Get()
         {
             var categorias = _mapper.Map<List<CategoriaVM>>(await _repository.Obter());
@@ -37,6 +38,7 @@ namespace Siscs.Agenda.Api.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [ClaimsAuthorize("Categoria", "Consultar")]
         public async Task<ActionResult<CategoriaVM>> GetById(long id)
         {
             
@@ -53,7 +55,7 @@ namespace Siscs.Agenda.Api.Controllers
         }
 
         [HttpPost]
-        //[ClaimsAuthorize("Categoria", "Incluir")]
+        [ClaimsAuthorize("Categoria", "Incluir")]
         public async Task<ActionResult<CategoriaVM>> Post(CategoriaVM categoriaVM)
         {
             if(!ModelState.IsValid) return CustomResponse(ModelState);
@@ -65,7 +67,7 @@ namespace Siscs.Agenda.Api.Controllers
         }
 
         [HttpPut]
-        // [ClaimsAuthorize("Categoria", "Alterar")]
+        [ClaimsAuthorize("Categoria", "Alterar")]
         public async Task<ActionResult<CategoriaVM>> Put(CategoriaVM categoriaVM)
         {
             if(!ModelState.IsValid) return CustomResponse(ModelState);
@@ -77,7 +79,7 @@ namespace Siscs.Agenda.Api.Controllers
         }
 
         [HttpDelete]
-        // [ClaimsAuthorize("Categoria", "Excluir")]
+        [ClaimsAuthorize("Categoria", "Excluir")]
         public async Task<ActionResult> Delete(CategoriaVM categoria)
         {
             if(categoria.Id <= 0)
