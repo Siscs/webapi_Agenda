@@ -23,7 +23,8 @@ namespace Siscs.Agenda.Api.Controllers
         public AuthController(INotificador notificador,
                               SignInManager<IdentityUser> signInmanager, 
                               UserManager<IdentityUser> usermanager,
-                              IOptions<TokenConfig> tokenConfig) : base(notificador)
+                              IOptions<TokenConfig> tokenConfig,
+                              IUsuario usuario) : base(notificador, usuario)
         {
             _signInmanager = signInmanager;
             _usermanager = usermanager;

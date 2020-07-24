@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 using Siscs.Agenda.Api.Services;
 using Siscs.Agenda.Data.Context;
 
@@ -18,7 +19,29 @@ namespace Siscs.Agenda.Api.Configuration
         public static IServiceCollection AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Desenvolvimento", p => p
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials());
+
+                options.AddPolicy("Producao", p => p
+                .WithOrigins("https://siscs.com.br")
+                .WithMethods("GET", "PUT", "POST")
+                //.WithHeaders(HeaderNames.ContentType, "x-custom-header")
+                .AllowAnyHeader()
+                .AllowCredentials());
+
+                options.AddDefaultPolicy(p => p
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials());
+
+                    
+            });
 
             services.ResolveDependencies();
 
@@ -60,15 +83,14 @@ namespace Siscs.Agenda.Api.Configuration
         public static IApplicationBuilder UseApiConfig(this IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            app.UseCors(x => x
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowAnyOrigin()
-            );
-
             if (env.IsDevelopment())
             {
+                app.UseCors("Desenvolvimento");
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseCors("Producao");
             }
 
             app.UseHttpsRedirection();

@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Siscs.Agenda.Api.Extensions;
 using Siscs.Agenda.Business.Interfaces;
 using Siscs.Agenda.Business.Notificacoes;
 using Siscs.Agenda.Business.Services;
@@ -26,6 +28,10 @@ namespace Siscs.Agenda.Api.Configuration
             services.AddScoped<ICategoriaService, CategoriaService>();
             // services.AddScoped<IInstituicaoService, InstituicaoService>();
             // services.AddScoped<ICursoService, CursoService>();
+
+            // app
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUsuario, AspNetUsuario>();
 
 
 

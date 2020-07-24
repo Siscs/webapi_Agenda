@@ -21,7 +21,8 @@ namespace Siscs.Agenda.Api.Controllers
         public CategoriaController(ICategoriaRepository CategoriaRepository,
                                    INotificador notificador,
                                    ICategoriaService categoriaService,
-                                   IMapper mapper) : base(notificador)
+                                   IMapper mapper,
+                                   IUsuario usuario) : base(notificador, usuario)
                                    
         {
             _repository = CategoriaRepository;
