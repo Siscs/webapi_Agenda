@@ -75,7 +75,21 @@ namespace Siscs.Agenda.Api.Controllers
                 var identityClaims = new ClaimsIdentity();
                 identityClaims.AddClaims(await _usermanager.GetClaimsAsync(usuario));
 
-                return CustomResponse(TokenService.GerarToken(usuario, identityClaims, roles, _tokenConfig));
+                var token = TokenService.GerarToken(usuario, identityClaims, roles, _tokenConfig);
+
+                var response = new LoginResponseVM
+                {
+                     Token = token,
+                     ExpiraEm = 0,
+                     Usuario = new TokenUsuarioVM
+                     {
+                          Id = usuario.Id,
+                          Email = usuario.Email,
+                          Claims = identityClaims.Claims.Select(c => new ClaimVM { Tipo = c.Type, Valor = c.Value })
+                     }
+                };
+
+                return CustomResponse(response);
             }
 
             if(result.IsLockedOut)
