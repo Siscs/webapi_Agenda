@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EA/j6wi7xY6VEwV7EuyuD8yuKrXjqDtgLcpnvGGpbNFDWDR/f8+QXvqDIHkj4i7lZeLehokJtt/gJHFfhiWxPg==",
+  "dgSpecHash": "HCzyYMFEPysnf/LMfGqCf8/yJ6Owrr6z3cduY0f0hcZYsawXml81IQkM52wnZ5VqvTvHkQayCUq/7/uFT2005A==",
   "success": true,
   "projectFilePath": "/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/Siscs.Agenda.Api.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,8 @@
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.identity/2.2.0/microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/3.1.6/microsoft.aspnetcore.identity.entityframeworkcore.3.1.6.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.identity.ui/3.1.6/microsoft.aspnetcore.identity.ui.3.1.6.nupkg.sha512",
+    "/home/cesar/.nuget/packages/microsoft.aspnetcore.mvc.versioning/4.1.1/microsoft.aspnetcore.mvc.versioning.4.1.1.nupkg.sha512",
+    "/home/cesar/.nuget/packages/microsoft.aspnetcore.mvc.versioning.apiexplorer/4.1.1/microsoft.aspnetcore.mvc.versioning.apiexplorer.4.1.1.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.aspnetcore.webutilities/2.2.0/microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/home/cesar/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Siscs.Agenda.Api.Services;
+using Siscs.Agenda.Api.Controllers;
 using Siscs.Agenda.Api.ViewModels;
 using Siscs.Agenda.Business.Entities;
 using Siscs.Agenda.Business.Interfaces;
 
-namespace Siscs.Agenda.Api.Controllers
+namespace Siscs.Agenda.Api.V1.Controllers
 {
     // [Authorize]
-    [Route("api/v1/instituicao")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/instituicao")]
     public class InstituicaoController : MainController
     {
         private readonly IInstituicaoRepository _repository;

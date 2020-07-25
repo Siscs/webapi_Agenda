@@ -19,62 +19,50 @@ namespace Siscs.Agenda.Api.Configuration
         public static IServiceCollection AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
 
+            services.AddControllers();
+
+            // api versioning
+            services.AddApiVersioning(options => 
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1,0);
+                options.ReportApiVersions = true;
+            });
+
+            services.AddVersionedApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
+            });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("Desenvolvimento", p => p
                         .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials());
+                        );
 
                 options.AddPolicy("Producao", p => p
                 .WithOrigins("https://siscs.com.br")
                 .WithMethods("GET", "PUT", "POST")
                 //.WithHeaders(HeaderNames.ContentType, "x-custom-header")
                 .AllowAnyHeader()
-                .AllowCredentials());
+                );
 
                 options.AddDefaultPolicy(p => p
                         .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials());
+                        );
 
                     
             });
-
-            services.ResolveDependencies();
 
             // desativar modelstate validators
             services.Configure<ApiBehaviorOptions>(options => 
             {
                 options.SuppressModelStateInvalidFilter = true;
-            });
-
-            // TOKEN JWT
-            var tokenConfigSection = configuration.GetSection("TokenConfig");
-            services.Configure<TokenConfig>(tokenConfigSection);
-
-            var tokenConfig = tokenConfigSection.Get<TokenConfig>();
-            var key = Encoding.ASCII.GetBytes(tokenConfig.Secret);
-
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = true;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                     ValidateIssuerSigningKey = true,
-                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidIssuer = tokenConfig.Emissor,
-                     ValidAudience = tokenConfig.ValidoEm
-                };
             });
 
             return services;

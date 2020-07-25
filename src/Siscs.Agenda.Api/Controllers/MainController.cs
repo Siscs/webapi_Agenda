@@ -22,12 +22,12 @@ namespace Siscs.Agenda.Api.Controllers
             _notificador = notificador;
             _usuario = usuario;
 
-            if(_usuario.Autenticado())
-            {
-                UsuarioAutenticado = true;
-                UsuarioId = _usuario.ObterId();
-                UsuarioNome = _usuario.Nome;
-            }
+            // if(_usuario.Autenticado())
+            // {
+            //     UsuarioAutenticado = true;
+            //     UsuarioId = _usuario.ObterId();
+            //     UsuarioNome = _usuario.Nome;
+            // }
         }
 
         protected bool TemNotificacoes()

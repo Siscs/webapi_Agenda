@@ -26,13 +26,14 @@ namespace Siscs.Agenda.Api
                 x.UseSqlServer(Configuration.GetConnectionString("local"))
             );
         
-            services.AddAutoMapper(typeof(Startup));
-
-            services.AddApiConfiguration(Configuration);
+            services.ResolveDependencies();
 
             services.AddIdentityConfiguration(Configuration);
 
-            services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
+            
+            services.AddApiConfiguration(Configuration);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

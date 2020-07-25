@@ -21,7 +21,7 @@ namespace Siscs.Agenda.Api.Services
         public ClaimsAuthorizeAttribute(string nomeClaim, string valorClaim)
             : base (typeof(RequesitoClaimFilter))
         {
-            
+            Arguments = new object[] { new Claim(nomeClaim, valorClaim) };
         }
     }
 

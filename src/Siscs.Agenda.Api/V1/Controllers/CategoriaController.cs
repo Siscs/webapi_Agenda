@@ -3,15 +3,18 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Siscs.Agenda.Api.Controllers;
 using Siscs.Agenda.Api.Services;
 using Siscs.Agenda.Api.ViewModels;
 using Siscs.Agenda.Business.Entities;
 using Siscs.Agenda.Business.Interfaces;
 
-namespace Siscs.Agenda.Api.Controllers
+namespace Siscs.Agenda.Api.V1.Controllers
 {
     [Authorize]
-    [Route("api/v1/categoria")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/categoria")]
+    //[Route("api/v1/categoria")]
     public class CategoriaController : MainController
     {
         private readonly ICategoriaRepository _repository;
@@ -30,8 +33,8 @@ namespace Siscs.Agenda.Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
         [ClaimsAuthorize("Categoria", "Consultar")]
+        [HttpGet]
         public async Task<ActionResult<List<CategoriaVM>>> Get()
         {
             var categorias = _mapper.Map<List<CategoriaVM>>(await _repository.Obter());

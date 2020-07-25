@@ -12,7 +12,9 @@ using Siscs.Agenda.Business.Interfaces;
 namespace Siscs.Agenda.Api.Controllers
 {
     [Authorize]
-    [Route("api/v1/auth")]
+    [ApiVersion("1.0")]
+    // [ApiVersion("1.0", Deprecated = true)]
+    [Route("api/v{version:apiVersion}/auth")]
     public class AuthController : MainController
     {
 
