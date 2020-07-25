@@ -33,8 +33,9 @@ namespace Siscs.Agenda.Api.V2.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
-        [ClaimsAuthorize("Categoria", "Consultar")]
+        //[ClaimsAuthorize("Categoria", "Consultar")]
         public async Task<ActionResult<List<CategoriaVM>>> Get()
         {
             var categorias = _mapper.Map<List<CategoriaVM>>(await _repository.Obter());

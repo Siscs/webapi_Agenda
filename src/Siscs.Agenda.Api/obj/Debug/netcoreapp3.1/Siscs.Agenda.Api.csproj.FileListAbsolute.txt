@@ -83,3 +83,7 @@
 /home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/obj/Debug/netcoreapp3.1/Siscs.Agenda.Api.dll
 /home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/obj/Debug/netcoreapp3.1/Siscs.Agenda.Api.pdb
 /home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/obj/Debug/netcoreapp3.1/Siscs.Agenda.Api.genruntimeconfig.cache
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.Swagger.dll
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/cesar/Projetos/Agenda/src/Siscs.Agenda.Api/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll

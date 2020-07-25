@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Siscs.Agenda.Api.Extensions;
 using Siscs.Agenda.Business.Interfaces;
 using Siscs.Agenda.Business.Notificacoes;
 using Siscs.Agenda.Business.Services;
 using Siscs.Agenda.Data.Context;
 using Siscs.Agenda.Data.Repository;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Siscs.Agenda.Api.Configuration
 {
@@ -33,8 +35,8 @@ namespace Siscs.Agenda.Api.Configuration
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUsuario, AspNetUsuario>();
 
-
-
+            // swagger
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
         }
         
