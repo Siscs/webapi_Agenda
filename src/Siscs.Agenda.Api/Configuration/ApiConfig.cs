@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
+using Siscs.Agenda.Api.Extensions;
 using Siscs.Agenda.Api.Services;
 using Siscs.Agenda.Data.Context;
 
@@ -80,6 +81,8 @@ namespace Siscs.Agenda.Api.Configuration
             {
                 app.UseCors("Producao");
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 

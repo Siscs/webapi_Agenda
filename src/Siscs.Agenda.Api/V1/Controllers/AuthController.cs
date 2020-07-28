@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Siscs.Agenda.Api.Services;
 using Siscs.Agenda.Api.ViewModels;
@@ -22,15 +23,19 @@ namespace Siscs.Agenda.Api.Controllers
         private readonly UserManager<IdentityUser> _usermanager;
         private readonly TokenConfig _tokenConfig;
 
+        private readonly ILogger _logger;
+
         public AuthController(INotificador notificador,
-                              SignInManager<IdentityUser> signInmanager, 
+                              SignInManager<IdentityUser> signInmanager,
                               UserManager<IdentityUser> usermanager,
                               IOptions<TokenConfig> tokenConfig,
-                              IUsuario usuario) : base(notificador, usuario)
+                              IUsuario usuario, 
+                              ILogger<AuthController> logger) : base(notificador, usuario)
         {
             _signInmanager = signInmanager;
             _usermanager = usermanager;
             _tokenConfig = tokenConfig.Value;
+            _logger = logger;
         }
 
         [HttpPost("usuario/novo")]
@@ -58,6 +63,8 @@ namespace Siscs.Agenda.Api.Controllers
             }
 
             await _signInmanager.SignInAsync(newUser, false);
+
+            _logger.LogInformation($"Cadastrado novo usuário {usuarioRegistrarVM.Email}");
 
             return CustomResponse(usuarioRegistrarVM);
 
@@ -91,6 +98,8 @@ namespace Siscs.Agenda.Api.Controllers
                           Claims = identityClaims.Claims.Select(c => new ClaimVM { Tipo = c.Type, Valor = c.Value })
                      }
                 };
+
+                _logger.LogInformation($"Novo login usuário: {usuario.Email}");
 
                 return CustomResponse(response);
             }

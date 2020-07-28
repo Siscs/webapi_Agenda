@@ -14,7 +14,7 @@ namespace Siscs.Agenda.Api.Configuration
     public static class DependencyConfig
     {
 
-        public static void ResolveDependencies(this IServiceCollection services ) {
+        public static IServiceCollection ResolveDependencies(this IServiceCollection services ) {
 
             // context
             services.AddScoped<SiscsContext, SiscsContext>();
@@ -37,6 +37,8 @@ namespace Siscs.Agenda.Api.Configuration
 
             // swagger
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
+            return services;
 
         }
         

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -38,6 +39,8 @@ namespace Siscs.Agenda.Api.V2.Controllers
         //[ClaimsAuthorize("Categoria", "Consultar")]
         public async Task<ActionResult<List<CategoriaVM>>> Get()
         {
+            // throw new Exception("Erro gerado na categoria");
+
             var categorias = _mapper.Map<List<CategoriaVM>>(await _repository.Obter());
             return categorias;
         }
