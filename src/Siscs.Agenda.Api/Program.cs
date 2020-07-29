@@ -21,6 +21,12 @@ namespace Siscs.Agenda.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    // .UseKestrel(options => {
+                    //     options.ListenAnyIP(8081, listenOptions =>
+                    //     {
+                    //         listenOptions.UseHttps("/home/cesar/.aspnet/https/aspnetapp.pfx","SiscsCertificado"); // crt.pfx password
+                    //     });
+                    // });
                 });
     }
 }

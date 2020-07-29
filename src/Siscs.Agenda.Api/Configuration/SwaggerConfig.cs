@@ -16,6 +16,13 @@ namespace Siscs.Agenda.Api.Configuration
     {
         public static IServiceCollection AddSwaggerConfig(this IServiceCollection services)
         {
+
+            // config basica
+            // services.AddSwaggerGen(s => 
+            // {
+            //     s.SwaggerDoc("v1", new OpenApiInfo { Title = "Siscs API", Version = "v1"} );
+            // });
+
             services.AddSwaggerGen(c =>
             {
                 c.OperationFilter<SwaggerDefaultValues>();
@@ -51,6 +58,13 @@ namespace Siscs.Agenda.Api.Configuration
 
         public static IApplicationBuilder UseSwaggerConfig(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
         {
+
+            // config básica
+            // app.UseSwagger();
+            // app.UseSwaggerUI(s =>
+            // {
+            //     s.SwaggerEndpoint("/swagger/v1/swagger.json","Siscs API V1");
+            // });
             
             // proteger doc swagger
             // app.UseMiddleware<SwaggerAuthorizedMiddleware>();

@@ -1,15 +1,11 @@
 using AutoMapper;
-using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using Siscs.Agenda.Api.Configuration;
-using Siscs.Agenda.Api.Extensions;
 using Siscs.Agenda.Data.Context;
 
 namespace Siscs.Agenda.Api
@@ -41,13 +37,7 @@ namespace Siscs.Agenda.Api
 
             services.AddSwaggerConfig();
 
-            // services.AddSwaggerGen(s => 
-            // {
-            //     s.SwaggerDoc("v1", new OpenApiInfo { Title = "Siscs API", Version = "v1"} );
-            // });
-
             services.AddLoggerConfig(Configuration);
-
             
         }
 
@@ -57,33 +47,7 @@ namespace Siscs.Agenda.Api
 
             app.UseApiConfig(env);
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-                // endpoints.MapHealthChecks("/api/hc", new HealthCheckOptions()
-                // {
-                //     Predicate = _ => true,
-                //     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                // });
-                // endpoints.MapHealthChecksUI(options =>
-                // {
-                //     options.UIPath = "/api/hc-ui";
-                //     options.ResourcesPath = "/api/hc-ui-resources";
-
-                //     options.UseRelativeApiPath = false;
-                //     options.UseRelativeResourcesPath = false;
-                //     options.UseRelativeWebhookPath = false;
-                // });
-            });
-
             app.UseSwaggerConfig(provider);
-
-            // app.UseSwagger();
-
-            // app.UseSwaggerUI(s =>
-            // {
-            //     s.SwaggerEndpoint("/swagger/v1/swagger.json","Siscs API V1");
-            // });
 
             app.UseLoggerConfig();
 

@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Http;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -24,12 +26,7 @@ namespace Siscs.Agenda.Api.Configuration
             
             
             //services.AddHealthChecks();
-
-           
-            services.AddHealthChecks()
-            .AddCheck("Categorias", new SqlServerHealthCheck(sqlConnection))
-            .AddSqlServer(sqlConnection, name: "BancoSql");
-
+          
             // provider elmah com ilogger
             // services.AddHealthChecks()
             //     .AddElmahIoPublisher(options =>
@@ -43,9 +40,14 @@ namespace Siscs.Agenda.Api.Configuration
             //     .AddSqlServer(configuration.GetConnectionString("DefaultConnection"), name: "BancoSQL");
             //     acima add integração com haltchecks
 
-             //services.AddHealthChecksUI();
-                // .AddInMemoryStorage();
             
+		// Comentado erro SSL    
+		// services.AddHealthChecksUI().AddInMemoryStorage();
+
+            services.AddHealthChecks()
+            .AddCheck("Categorias", new SqlServerHealthCheck(sqlConnection))
+            .AddSqlServer(sqlConnection, name: "BancoSql");
+
 
             return services;
 
@@ -59,11 +61,11 @@ namespace Siscs.Agenda.Api.Configuration
 
             //app.UseHealthChecks("/api/hc");
 
-            app.UseHealthChecks("/api/hc", new HealthCheckOptions()
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            });
+            // app.UseHealthChecks("/api/hc", new HealthCheckOptions()
+            // {
+            //     Predicate = _ => true,
+            //     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            // });
 
             // app.UseHealthChecksUI(options => 
             // {
